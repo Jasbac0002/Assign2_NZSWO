@@ -11060,11 +11060,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Jasper_Files\\Soft703_WebApp\\Assignment\\A2\\NZWSO2\\NZWSO.csproj",
+      "projectUniqueName": "C:\\Jasper_Files\\Soft703_WebApp\\Assignment\\A2\\Assign2_NZSWO\\NZWSO.csproj",
       "projectName": "NZWSO",
-      "projectPath": "C:\\Jasper_Files\\Soft703_WebApp\\Assignment\\A2\\NZWSO2\\NZWSO.csproj",
+      "projectPath": "C:\\Jasper_Files\\Soft703_WebApp\\Assignment\\A2\\Assign2_NZSWO\\NZWSO.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Jasper_Files\\Soft703_WebApp\\Assignment\\A2\\NZWSO2\\obj\\",
+      "outputPath": "C:\\Jasper_Files\\Soft703_WebApp\\Assignment\\A2\\Assign2_NZSWO\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

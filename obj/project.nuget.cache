@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Iw23uqIIrT2uAFPpDZ+JCYVwgN/4WlOxEudCq8Iwgx8kRjTpoI1OqrYl9mjQcYeSWwQY/FY6bUf50RIChCUDwg==",
+  "dgSpecHash": "kdZK9djZcqmrsSgo8G6I+XAK+5woi9oz7r5jTiGz4+j3SsF3B8CT1Uv6+m1ZC/9hLWM9MWXNfQ4Tj65DgeGNPQ==",
   "success": true,
-  "projectFilePath": "C:\\Jasper_Files\\Soft703_WebApp\\Assignment\\A2\\NZWSO2\\NZWSO.csproj",
+  "projectFilePath": "C:\\Jasper_Files\\Soft703_WebApp\\Assignment\\A2\\Assign2_NZSWO\\NZWSO.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
