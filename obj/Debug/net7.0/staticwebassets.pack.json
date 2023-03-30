@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
+      "Id": "C:\\Jasper_Files\\Soft703_WebApp\\Assignment\\A2\\Assign2_NZSWO\\wwwroot\\lib\\bootstrap\\bootstrap.min_new.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\bootstrap.min_new.css"
+    },
+    {
       "Id": "C:\\Jasper_Files\\Soft703_WebApp\\Assignment\\A2\\Assign2_NZSWO\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
@@ -199,6 +203,10 @@
     {
       "Id": "C:\\Jasper_Files\\Soft703_WebApp\\Assignment\\A2\\Assign2_NZSWO\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Jasper_Files\\Soft703_WebApp\\Assignment\\A2\\Assign2_NZSWO\\wwwroot\\lib\\bootstrap\\x.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\x.css"
     },
     {
       "Id": "C:\\Jasper_Files\\Soft703_WebApp\\Assignment\\A2\\Assign2_NZSWO\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",

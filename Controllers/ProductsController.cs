@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
 using NZWSO.Data;
 using NZWSO.Models;
 
@@ -25,7 +26,39 @@ namespace NZWSO.Controllers
             _userManager = userManager;
         }
 
-        [Authorize(Roles = "Costumer")]
+        [Authorize(Roles = "Admin, Customer")]
+        public ActionResult Index(string searchType, string searchTerm)
+        {
+            var products = _context.Products.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                switch (searchType)
+                {
+                    case "category":
+                        products = products.Where(p => p.Category.Contains(searchTerm));
+                        break;
+                    case "date":
+                        if (DateTime.TryParse(searchTerm, out DateTime date))
+                        {
+                            products = products.Where(p => p.DateAdded == date);
+                        }
+                        break;
+                    case "name":
+                        products = products.Where(p => p.Name.Contains(searchTerm) || p.Description.Contains(searchTerm));
+                        break;
+                }
+            }
+
+
+            return View(products.ToList());
+        }
+  
+
+
+
+
+        [Authorize(Roles = "Customer")]
         public async Task<IActionResult> Buy(int id)
         {
             if (id == null || id == 0) RedirectToAction(nameof(Index));
@@ -50,14 +83,14 @@ namespace NZWSO.Controllers
             }                      
         }
 
-        // GET: Products
-        [Authorize(Roles = "Admin, Costumer")]
-        public async Task<IActionResult> Index()
-        {             
-              return _context.Products != null ? 
-                          View(await _context.Products.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Products'  is null.");
-        }
+        //// GET: Products
+        //[Authorize(Roles = "Admin, Customer")]
+        //public async Task<IActionResult> Index()
+        //{             
+        //      return _context.Products != null ? 
+        //                  View(await _context.Products.ToListAsync()) :
+        //                  Problem("Entity set 'ApplicationDbContext.Products'  is null.");
+        //}
 
         // GET: Products/Details/5
         //[Authorize(Roles = "Admin")]
@@ -91,7 +124,7 @@ namespace NZWSO.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,ImageURL,Price")] Product product)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,ImageURL,Price,Category,DateAdded")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -125,7 +158,7 @@ namespace NZWSO.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,ImageURL,Price")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,ImageURL,Price,Category,DateAdded")] Product product)
         {
             if (id != product.Id)
             {
@@ -198,5 +231,38 @@ namespace NZWSO.Controllers
         {
           return (_context.Products?.Any(e => e.Id == id)).GetValueOrDefault();
         }
-    }
+
+		//Added 24/03 --------------------------------------------------------
+		[HttpPost]
+		public ActionResult SearchByDate(DateTime startDate, DateTime endDate)
+		{
+			var products = _context.Products
+				.Where(p => p.DateAdded >= startDate && p.DateAdded <= endDate)
+				.ToList();
+
+			return PartialView("_SearchResults", products);
+		}
+
+		[HttpPost]
+		public ActionResult SearchByCategory(string category)
+		{
+			var products = _context.Products
+				.Where(p => p.Category == category)
+				.ToList();
+
+			return PartialView("_SearchResults", products);
+		}
+
+		[HttpPost]
+		public ActionResult SearchByName(string searchTerm)
+		{
+			var products = _context.Products
+				.Where(p => p.Name.Contains(searchTerm) || p.Description.Contains(searchTerm))
+				.ToList();
+
+			return PartialView("_SearchResults", products);
+		}
+
+
+	}
 }

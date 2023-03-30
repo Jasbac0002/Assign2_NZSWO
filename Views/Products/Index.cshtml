@@ -14,9 +14,54 @@
     </p>
 }
 
+
+
+@*@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+{
+    <p>
+        Search by:
+        <select name="searchType" id="searchType">
+            <option value="category">Category</option>
+            <option value="date">Date</option>
+            <option value="name">Name</option>
+        </select>
+        <span id="category-search" style="display:none;">
+            @Html.TextBox("category")
+        </span>
+        <span id="date-search" style="display:none;">
+            @Html.TextBox("date")
+        </span>
+        <span id="name-search" style="display:none;">
+            @Html.TextBox("name")
+        </span>
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#searchType').change(function () {
+            var selected = $(this).val();
+            $('#category-search, #date-search, #name-search').hide();
+            $('#' + selected + '-search').show();
+            // modify the name attribute of the search term input field
+            $('#searchTerm').attr('name', selected);
+        });
+    });
+</script>*@
+
+
+
+
+@*add variable to to control the price value to 50% if he is a new user and doesnt check out yet *@
+
+
 <div class="d-flex flex-row justify-content-between flex-lg-wrap w-100" style="width: 100vw;">
     @foreach (var item in Model)
     {
+
         <div class="container mb-3" style="width: 15vw; height: 25vh;">
             <div class="card" >
                 <div class="card-header">@item.Name</div>
